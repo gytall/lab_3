@@ -7,6 +7,8 @@ public class HashTableTest {
 			hashTable.put("apple", 1);
 			hashTable.put("banana", 2);
 			hashTable.put("orange", 3);
+			hashTable.put("pear", 2);
+			
 
 			// Тестирование метода get
 			System.out.println("Значение для 'apple': " + hashTable.get("apple")); // 1

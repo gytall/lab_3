@@ -24,17 +24,29 @@ public class HashTable<K, V> {
     }
 
     private int hash(K key) {
-        return Math.abs(key.hashCode() % table.length); // Изменено для избежания отрицательных индексов
+        return Math.abs(key.hashCode() % table.length);
     }
 
     public void put(K key, V value) {
         int index = hash(key);
+        boolean collision = false; 
+
+  
         for (Entry<K, V> entry : table[index]) {
             if (entry.key.equals(key)) {
+         
                 entry.value = value;
                 return;
+            } else {
+                
+                collision = true;
             }
         }
+
+        if (collision) {
+            System.out.println("Коллизия при добавлении ключа: " + key + " в бакет с индексом: " + index);
+        }
+
         table[index].add(new Entry<>(key, value));
         size++;
     }
